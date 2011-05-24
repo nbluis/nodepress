@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Nodepress</title>
+		<link rel="stylesheet" href="/css/style.css" type="text/css" />
+	</head>
+	<body>
+		<div id="page">
+			<div id="header">
+				<div id="headerimg">
+					<h1><a href="/"><%= getConfiguration('BLOG_NAME')%></a></h1>
+					<div class="description"><%= getConfiguration('BLOG_DESCRIPTION')%></div>
+				</div>
+			</div>
+			<hr />
+			<div id="content" class="narrowcolumn">
+			<%- body %>
+			</div>
+
+			<div id="sidebar">
+				<ul>
+					<li class="pagenav">
+						<h2>Navigation</h2>
+						<ul>
+							<li class="page_item page-item-2"><a href="/posts/new" title="NEW Post">New Post</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div id="footer">
+				<p>Theme Preview is proudly powered by <a href="http://wordpress.org/">WordPress</a>.<br/>Website developed with <a href="http://nodejs.org/">Node.js</a></p>
+			</div>		
+		</div>
+	</body>
+</html>

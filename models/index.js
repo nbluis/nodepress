@@ -1,13 +1,14 @@
-var mongoose = require('mongoose');
+var config = require('../config'),
+	mongoose = require('mongoose');
 
 module.exports = function(options) {
-	//todo options aqui
-	mongoose.connect('mongodb://localhost/nodejs');
+	mongoose.connect('mongodb://localhost/' + config['MONGO_SCHEMA']);
 
 	mongoose.model('Post', new mongoose.Schema({
-		nome: { type:String, index: false, unique: true},
-		idade: { type:Number, index: true}
-	});
-	
+		title: { type:String , index:true},
+		content: { type:String },
+		date : { type: Date, default: Date.now, index:true }
+	}));
+		
 	return mongoose;
 }();

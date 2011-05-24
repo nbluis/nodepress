@@ -1,5 +1,10 @@
+var models = require('../models');
+
 module.exports = {
 	index: function (request, response) {
-		response.end('It works!');
+		models.model('Post').find({}, [], {sort:[['date',-1]]}, function(err, list) {
+			if (err) throw new Error(err);
+			response.render('index', { posts : list });
+		});
 	}
 };
