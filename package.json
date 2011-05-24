@@ -1,6 +1,6 @@
 {
 	"name": "nodepress", 
-	"description": "A simple blog sistem using nodejs, expresss and mongodb.", 
+	"description": "A simple blog system using nodejs, expresss and mongodb.", 
 	"version": "0.0.1", 
 	"author": "Eduardo Bohrer <nbluisrs@gmail.com>", 
 	"keywords": ["blog", "nodepress"], 
