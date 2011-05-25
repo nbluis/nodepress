@@ -1,8 +1,8 @@
 <div>
-	<form action="create" method="post">
-		<label for="title"><p>Post Title:</p><input type="text" name="title" size="60"></label><br/>
-		<label for="content"><p>Post Content:</p><textarea name="content" cols="60" rows="30"></textarea></label><br/>
+	<%- formFor(post) %>
+		<%- textField('title', post.title, {size:60}) %><br/>
+		<%- textArea('content', post.content, {cols:60, rows:30}) %><br/>
 		<br/>
-		<input type="submit" value="Save">
-	</form>
+		<input type="submit" value="Save"/>
+	<%- endForm() %>
 </div>

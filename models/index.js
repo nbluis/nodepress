@@ -1,7 +1,7 @@
 var config = require('../config'),
 	mongoose = require('mongoose');
 
-module.exports = function(options) {
+module.exports = Post = function() {
 	mongoose.connect('mongodb://localhost/' + config['MONGO_SCHEMA']);
 
 	mongoose.model('Post', new mongoose.Schema({
@@ -9,6 +9,6 @@ module.exports = function(options) {
 		content: { type:String },
 		date : { type: Date, default: Date.now, index:true }
 	}));
-		
+
 	return mongoose;
 }();

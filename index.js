@@ -21,6 +21,8 @@ webapp.helpers(helpers);
 //routes
 webapp.all('/', mainController.index);
 webapp.all('/posts/new', postController.new);
+webapp.get('/posts/:id', postController.edit);
 webapp.post('/posts/create', postController.create);
+webapp.post('/posts/update', postController.update);
 
 webapp.listen(config['WEBAPP_PORT']);
