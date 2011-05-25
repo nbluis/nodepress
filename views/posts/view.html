@@ -1,7 +1,10 @@
 <div class="post">
-	<h2><a href="/posts/<%= post._id %>"><%= post.title %></a></h2>
+	<h2><%= post.title %></h2>
 	<small><%= post.date %></small>
 	<div class="entry">
 	<%= post.content %>
 	</div>
+	<p class="postmetadata">
+		<a href="/posts/<%= post._id %>/edit">[edit]</a>&nbsp;::&nbsp;<a href="/posts/<%= post._id %>/delete">[remove]</a>
+	</p>
 </div>

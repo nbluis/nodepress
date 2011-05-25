@@ -1,4 +1,6 @@
-var models = require('../models');
+var config = require('../config'),
+	models = require('../models');
+
 var Post = models.model('Post');
 
 module.exports = {
@@ -21,7 +23,7 @@ module.exports = {
 		if (post.title && post.content) {
 			post.save(function(err, post) {
 				if (err) throw new Error(err);
-				response.render('posts/entry', { post : post });
+				response.redirect('posts/' + post._id);
 			});
 		}
 	},
@@ -31,8 +33,25 @@ module.exports = {
 			post.title = request.body.title;
 			post.content = request.body.content;
 			post.save(function(err, post) {
-				response.render('posts/entry', { post : post });
+				response.redirect('posts/' + post._id);
 			});
+		});
+	},
+	delete: function(request, response) {
+		Post.remove({_id: request.params.id}, function(err) {
+			if (err) throw new Error(err);
+			response.redirect('/');
+		});	
+	},
+	search: function(request, response) {
+		var limit = config['POSTS_PER_PAGE'];
+		var page = request.params.page || 1;
+		if (page < 0) page = 1;
+		var skip = limit * (page - 1);
+		
+		Post.find({}, [], {sort:[['date',-1]], skip : skip, limit: limit}, function(err, list) {
+			if (err) throw new Error(err);
+			response.render('index', { posts : list , page : page });
 		});
 	}
 };

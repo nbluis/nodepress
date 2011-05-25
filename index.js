@@ -19,9 +19,11 @@ webapp.use(express.static(__dirname + '/public'));
 webapp.helpers(helpers);
 
 //routes
-webapp.all('/', mainController.index);
-webapp.all('/posts/new', postController.new);
-webapp.get('/posts/:id', postController.edit);
+webapp.get('/', postController.search);
+webapp.get('/posts/new', postController.new);
+webapp.get('/posts/:id/edit', postController.edit);
+webapp.get('/posts/:id/delete', postController.delete);
+webapp.get('/posts/:page', postController.search);
 webapp.post('/posts/create', postController.create);
 webapp.post('/posts/update', postController.update);
 

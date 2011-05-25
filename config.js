@@ -3,5 +3,6 @@ module.exports = {
 	'MONGO_HOST' : 'localhost',
 	'MONGO_SCHEMA' : 'nodepress',
 	'BLOG_NAME' : 'Nodepress Weblog',
-	'BLOG_DESCRIPTION' : 'Just another nodepress weblog.'
+	'BLOG_DESCRIPTION' : 'Just another nodepress weblog.',
+	'POSTS_PER_PAGE' : 5
 };

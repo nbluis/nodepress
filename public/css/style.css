@@ -425,13 +425,13 @@ html>body .entry li {
 
 #sidebar ul, #sidebar ul ol {
 	margin: 0;
-	padding: 0;
+	padding: 10, 0, 0, 0;
 	}
 
 #sidebar ul li {
 	list-style-type: none;
 	list-style-image: none;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	}
 
 #sidebar ul p, #sidebar ul select {
