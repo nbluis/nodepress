@@ -1,10 +1,10 @@
 var config  = require('./config'),
-	helpers = require('./helpers'),
-	express = require('express'),
-	engine  = require('ejs');
+    helpers = require('./helpers'),
+    express = require('express'),
+    engine  = require('ejs');
 
 var mainController = require('./controllers/MainController'),
-	postController = require('./controllers/PostController');
+    postController = require('./controllers/PostController');
 
 var webapp = express.createServer();
 

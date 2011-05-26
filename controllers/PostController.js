@@ -1,5 +1,5 @@
 var config = require('../config'),
-	models = require('../models');
+    models = require('../models');
 
 var Post = models.model('Post');
 

@@ -1,5 +1,5 @@
 var models = require('../models'),
-	config = require('../config');
+    config = require('../config');
 
 module.exports = {
 	index: function (request, response) {

@@ -1,5 +1,5 @@
 var config = require('./config'),
-	mongoose = require('mongoose');
+    mongoose = require('mongoose');
 
 module.exports = Post = function() {
 	mongoose.connect('mongodb://localhost/' + config['MONGO_SCHEMA']);
