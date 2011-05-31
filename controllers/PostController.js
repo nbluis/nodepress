@@ -1,19 +1,25 @@
-var config = require('../config'),
+var AppController = require('./AppController'),
+    config = require('../config'),
     models = require('../models');
 
 var Post = models.model('Post');
 
-module.exports = {
-	new: function (request, response) {
+var PostController = function() {
+	var self = this;
+	AppController.apply(this);
+	
+	this.new = function (request, response) {
 		response.render('posts/entry', { post : new Post() });
-	},
-	edit: function (request, response) {
+	};
+	
+	this.edit = function (request, response) {
 		Post.findById(request.params.id, [], {}, function(err, post) {
 			if (err) throw new Error(err);
 			response.render('posts/entry', { post : post });
 		});
-	},
-	create: function(request, response) {
+	};
+	
+	this.create = function(request, response) {
 		var post = new Post( {
 			title: request.body.title,
 			content: request.body.content
@@ -26,8 +32,9 @@ module.exports = {
 				response.redirect('posts/' + post._id);
 			});
 		}
-	},
-	update: function(request, response) {
+	};
+	
+	this.update = function(request, response) {
 		Post.findById(request.body._id, [], {}, function(err, post) {
 			if (err) throw new Error(err);
 			post.title = request.body.title;
@@ -36,14 +43,16 @@ module.exports = {
 				response.redirect('posts/' + post._id);
 			});
 		});
-	},
-	delete: function(request, response) {
+	};
+	
+	this.delete = function(request, response) {
 		Post.remove({_id: request.params.id}, function(err) {
 			if (err) throw new Error(err);
 			response.redirect('/');
 		});	
-	},
-	search: function(request, response) {
+	};
+	
+	this.search = function(request, response) {
 		var limit = config['POSTS_PER_PAGE'];
 		var page = request.params.page || 1;
 		if (page < 0) page = 1;
@@ -53,5 +62,7 @@ module.exports = {
 			if (err) throw new Error(err);
 			response.render('index', { posts : list , page : page });
 		});
-	}
+	};
 };
+
+module.exports = new PostController();

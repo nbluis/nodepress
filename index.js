@@ -3,8 +3,7 @@ var config  = require('./config'),
     express = require('express'),
     engine  = require('ejs');
 
-var mainController = require('./controllers/MainController'),
-    postController = require('./controllers/PostController');
+var postController = require('./controllers/PostController');
 
 var webapp = express.createServer();
 
