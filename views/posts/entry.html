@@ -1,5 +1,5 @@
 <div>
-	<%- formFor(post) %>
+	<%- formFor(post, '/posts') %>
 		<%- textField('title', post.title, {size:60}) %><br/>
 		<%- textArea('content', post.content, {cols:60, rows:30}) %><br/>
 		<br/>

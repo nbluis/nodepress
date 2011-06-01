@@ -4,12 +4,13 @@ module.exports = Helper = {
 	getConfiguration : function(key) {
 		return config[key];
 	},
-	formFor : function(reference) {
+	formFor : function(reference, path) {
 		if (!reference) throw new Error('invalid reference');
 		
-		var form = '<form action="';
-		form += (reference.isNew) ? 'create' : 'update';
+		var form = '<form action="' + path;
+		if (reference.id) form += '/' + reference.id;
 		form += '" method="post">';
+		form += '\n' + Helper.hiddenField('_method', (reference.isNew) ? 'post' : 'put');
 		if (reference._id) form += '\n' + Helper.hiddenField('_id', reference._id);
 		return form;
 	},

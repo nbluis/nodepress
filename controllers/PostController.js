@@ -12,6 +12,10 @@ var PostController = function() {
 		response.render('posts/entry', { post : new Post() });
 	};
 	
+	this.show = function (request, response) {
+		
+	};
+	
 	this.edit = function (request, response) {
 		Post.findById(request.params.id, [], {}, function(err, post) {
 			if (err) throw new Error(err);
@@ -29,7 +33,7 @@ var PostController = function() {
 		if (post.title && post.content) {
 			post.save(function(err, post) {
 				if (err) throw new Error(err);
-				response.redirect('posts/' + post._id);
+				response.redirect('posts/' + post._id + '/edit');
 			});
 		}
 	};
@@ -40,12 +44,12 @@ var PostController = function() {
 			post.title = request.body.title;
 			post.content = request.body.content;
 			post.save(function(err, post) {
-				response.redirect('posts/' + post._id);
+				response.redirect('posts/' + post._id + '/edit');
 			});
 		});
 	};
 	
-	this.delete = function(request, response) {
+	this.destroy = function(request, response) {
 		Post.remove({_id: request.params.id}, function(err) {
 			if (err) throw new Error(err);
 			response.redirect('/');
@@ -57,7 +61,16 @@ var PostController = function() {
 		var page = request.params.page || 1;
 		if (page < 0) page = 1;
 		var skip = limit * (page - 1);
-		
+		var post = new Post();
+		//console.log(post.schema);
+		//console.log(post.schema.constructor);
+		//
+		for (var key in post) {
+			try {
+				console.log(key + ':' + post[key]);				
+			}catch(e){}
+		}//
+		console.log(new Post());
 		Post.find({}, [], {sort:[['date',-1]], skip : skip, limit: limit}, function(err, list) {
 			if (err) throw new Error(err);
 			response.render('index', { posts : list , page : page });
