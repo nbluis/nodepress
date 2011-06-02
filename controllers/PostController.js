@@ -13,7 +13,10 @@ var PostController = function() {
 	};
 	
 	this.show = function (request, response) {
-		
+		Post.findById(request.params.id, [], {}, function(err, post) {
+			if (err) throw new Error(err);
+			response.render('posts/entry', { post : post });
+		});
 	};
 	
 	this.edit = function (request, response) {
@@ -39,7 +42,7 @@ var PostController = function() {
 	};
 	
 	this.update = function(request, response) {
-		Post.findById(request.body._id, [], {}, function(err, post) {
+		Post.findById(request.params.id, [], {}, function(err, post) {
 			if (err) throw new Error(err);
 			post.title = request.body.title;
 			post.content = request.body.content;

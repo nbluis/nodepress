@@ -7,11 +7,10 @@ module.exports = Helper = {
 	formFor : function(reference, path) {
 		if (!reference) throw new Error('invalid reference');
 		
-		var form = '<form action="' + path;
-		if (reference.id) form += '/' + reference.id;
+		var form = '<form action="' + path + '/';
+		if (!reference.isNew) form += reference.id;
 		form += '" method="post">';
-		form += '\n' + Helper.hiddenField('_method', (reference.isNew) ? 'post' : 'put');
-		if (reference._id) form += '\n' + Helper.hiddenField('_id', reference._id);
+		if (!reference.isNew) form += '\n' + Helper.hiddenField('_method', 'put');
 		return form;
 	},
 	endForm : function() {

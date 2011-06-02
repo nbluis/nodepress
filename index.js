@@ -2,6 +2,7 @@ var config  = require('./config'),
     helpers = require('./helpers'),
     express = require('express'),
     engine  = require('ejs');
+    routeUtils = require('./routeUtils');
 
 var postController = require('./controllers/PostController');
 
@@ -21,11 +22,6 @@ webapp.helpers(helpers);
 //routes
 webapp.get('/', postController.search);
 webapp.get('/:page', postController.search);
-webapp.get('/posts/new', postController.new);
-webapp.get('/posts/:id', postController.show);
-webapp.get('/posts/:id/edit', postController.edit);
-webapp.post('/posts/', postController.create);
-webapp.put('/posts/:id', postController.update);
-webapp.delete('/posts/:id', postController.destroy);
+routeUtils.createDefaultModelRoutes(webapp, postController, '/posts');
 
 webapp.listen(config['WEBAPP_PORT']);
