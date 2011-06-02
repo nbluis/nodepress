@@ -2,10 +2,10 @@
 <br/><br/>
 <div>
 <% if (posts.length == getConfiguration('POSTS_PER_PAGE')) { %>
-<a href="/posts/<%= (parseInt(page) + 1) %>"><< Anterior </a>
+<a href="/<%= (parseInt(page) + 1) %>"><< Anterior </a>
 <% } %>
 <% if (posts.length == getConfiguration('POSTS_PER_PAGE') && page > 1) { %>::<% } %>
 <% if (page > 1) { %>
-<a href="/posts/<%= (parseInt(page) - 1) %>"> Próximo >> </a>
+<a href="/<%= (parseInt(page) - 1) %>"> Próximo >> </a>
 <% } %>
 </div>

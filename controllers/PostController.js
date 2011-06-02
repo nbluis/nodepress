@@ -61,16 +61,7 @@ var PostController = function() {
 		var page = request.params.page || 1;
 		if (page < 0) page = 1;
 		var skip = limit * (page - 1);
-		var post = new Post();
-		//console.log(post.schema);
-		//console.log(post.schema.constructor);
-		//
-		for (var key in post) {
-			try {
-				console.log(key + ':' + post[key]);				
-			}catch(e){}
-		}//
-		console.log(new Post());
+
 		Post.find({}, [], {sort:[['date',-1]], skip : skip, limit: limit}, function(err, list) {
 			if (err) throw new Error(err);
 			response.render('index', { posts : list , page : page });
