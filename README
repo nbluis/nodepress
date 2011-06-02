@@ -1,4 +1,4 @@
-A simple blog system using nodejs, expresss and mongodb.
+A simple blog system using nodejs, express and mongodb.
 
 Usage:
 #install the project dependencies (see package.json for more information)
